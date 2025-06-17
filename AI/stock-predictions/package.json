@@ -1,6 +1,7 @@
 {
     "name": "Scrim-s05qcfg",
     "description": "https://scrimba.com/fullstack-path-c0fullstack/~05tv/s0gkn1nkmf/head",
+    "type": "module",
     "scripts": {
         "start": "vite",
         "dev": "vite",
@@ -8,6 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "dotenv": "^16.5.0",
         "openai": "^5.5.0",
         "vite": "latest"
     }
