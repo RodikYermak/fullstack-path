@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
@@ -29,7 +30,8 @@ main {
 
 /* Panels */
 
-.action-panel, .output-panel {
+.action-panel,
+.output-panel {
     line-height: 1.4em;
     display: flex;
     height: 350px;
@@ -54,7 +56,7 @@ main {
     text-align: center;
 }
 
-.output-panel p{
+.output-panel p {
     overflow-y: scroll;
 }
 
@@ -62,7 +64,7 @@ main {
 
 h2 {
     text-align: center;
-    font-weight: 400; 
+    font-weight: 400;
     margin-top: -26px;
     background-color: #f6f6f6;
     padding: 0 10px;
@@ -79,7 +81,7 @@ p.tag-line {
 .ticker-choice-display {
     display: flex;
     align-items: center;
-    height: 3em; 
+    height: 3em;
 }
 
 /* controls */
@@ -93,7 +95,7 @@ form {
 
 label {
     text-align: center;
-    padding: .43em;
+    padding: 0.43em;
     font-size: 15px;
     margin-bottom: 1em;
     width: 80%;
@@ -104,7 +106,7 @@ label {
     width: 70%;
 }
 
-input[type="text"] {
+input[type='text'] {
     padding: 1em;
     border: 2px solid black;
     border-right: none;
@@ -117,7 +119,7 @@ input[type="text"] {
     align-items: center;
     background-color: #ffffff;
     font-size: 3em;
-    padding: 0 .35em;
+    padding: 0 0.35em;
     cursor: pointer;
     border: 2px solid;
 }
@@ -135,14 +137,14 @@ input[type="text"] {
     background-color: #46ff90;
     text-transform: uppercase;
     font-weight: 500;
-    letter-spacing: .09em;
+    letter-spacing: 0.09em;
     font-size: 105%;
 }
 
 /* ticker display (ensure comma separated) */
 
 .ticker {
-    margin: 0 .1em;
+    margin: 0 0.1em;
     content: '';
 }
 
