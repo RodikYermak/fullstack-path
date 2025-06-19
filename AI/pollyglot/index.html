@@ -5,6 +5,29 @@
     </head>
     <body>
         <!-- Your HTML here -->
+        <h1>PollyGlot goes here</h1>
+        <header>
+            <img src="assets/parrot.png" alt="Parrot" />
+        </header>
+
+        <form id="translation-form">
+            <h3>Text to translate</h3>
+            <input type="text" placeholder="How are you?" name="text" required />
+
+            <p>Select languages:</p>
+
+            <input type="radio" name="language" value="french" id="french" required />
+            <label for="french">French</label>
+
+            <input type="radio" name="language" value="spanish" id="spanish" />
+            <label for="spanish">Spanish</label>
+
+            <input type="radio" name="language" value="japanese" id="japanese" />
+            <label for="japanese">Japanese</label>
+
+            <button type="submit">Translate</button>
+        </form>
+
         <script src="index.js" type="module"></script>
     </body>
 </html>
