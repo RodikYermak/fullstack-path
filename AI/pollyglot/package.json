@@ -1,0 +1,14 @@
+{
+    "name": "PollyGlot",
+    "description": "https://scrimba.com/fullstack-path-c0fullstack/~0xrr/s0c9684317/head",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "vite": "latest"
+    },
+    "devDependencies": {}
+}
