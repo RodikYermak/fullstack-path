@@ -1,1 +1,0 @@
-AI course will be going here
