@@ -25,6 +25,51 @@ bold
 
 #EFF0F4 grey
 
-
+width 390
+height 780
 
 */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fff;
+    width: 390px;
+    margin: 0 auto;
+    /* height: 780px; */
+}
+
+header {
+    background-image: url('assets/worldmap.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 390px;
+    height: 213px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #32cd32;
+}
+
+.p-header {
+    color: #ffffff;
+}
+
+.img-parrot {
+    width: 95px;
+    height: 85px;
+}
