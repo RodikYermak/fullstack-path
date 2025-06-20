@@ -15,13 +15,13 @@
 
         <form id="translation-form">
             <h3>Text to translate</h3>
-            <textarea placeholder="How are you?"></textarea>
+            <textarea id="source-text" placeholder="How are you?"></textarea>
 
             <h3>Select language:</h3>
 
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="language" value="french" id="french" required />
+                    <input type="radio" name="language" value="french" id="french" checked />
                     French <img src="assets/fr-flag.png" alt="French flag" />
                 </label>
 
@@ -39,7 +39,7 @@
             <button>Translate</button>
 
             <h3>Your translation</h3>
-            <textarea placeholder="Comment allez-vous?"></textarea>
+            <textarea id="translated-text" placeholder="Comment allez-vous?"></textarea>
             <button>Start Over</button>
         </form>
 
