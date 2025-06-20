@@ -8,6 +8,29 @@ const openai = new OpenAI({
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('translation-form');
+    const copyButton = document.getElementById('copy-button');
+    const translatedTextArea = document.getElementById('translated-text');
+
+    copyButton.addEventListener('click', () => {
+        const text = translatedTextArea.value;
+
+        if (!text.trim()) {
+            alert("There's no text to copy.");
+            return;
+        }
+
+        navigator.clipboard
+            .writeText(text)
+            .then(() => {
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy';
+                }, 1500);
+            })
+            .catch((err) => {
+                console.error('Copy failed:', err);
+            });
+    });
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -24,11 +47,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-async function fetchTranslation(text, language) {
+async function fetchTranslation(text, option) {
+    let systemPrompt = '';
+
+    if (option === 'fix') {
+        systemPrompt = `
+            You are an English grammar expert.
+            If the input is in English, correct any grammar or spelling mistakes without changing the meaning.
+        `;
+    } else {
+        systemPrompt = `
+            You are a professional translator.
+            Translate the following input into ${option}.
+            Only return the translated text without explanations.
+        `;
+    }
     const messages = [
         {
             role: 'system',
-            content: `You are a professional translator. Translate all input into ${language}. Only return the translated text.`,
+            content: systemPrompt.trim(),
         },
         {
             role: 'user',

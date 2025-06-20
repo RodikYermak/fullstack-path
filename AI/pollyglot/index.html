@@ -4,7 +4,9 @@
         <link rel="stylesheet" href="index.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Poppins:wght@600;700&display=swap"
+            rel="stylesheet" />
         <title>PolyGlot Translator</title>
     </head>
     <body>
@@ -24,26 +26,27 @@
 
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="language" value="french" checked />
-                    French <img src="assets/fr-flag.png" alt="French flag" />
+                    <input type="radio" name="language" value="fix" checked />
+                    Fix Grammar <img src="assets/fix-grammar.png" alt="Fix grammar" />
                 </label>
 
                 <label>
-                    <input type="radio" name="language" value="spanish" />
-                    Spanish <img src="assets/sp-flag.png" alt="Spanish flag" />
+                    <input type="radio" name="language" value="Russian" />
+                    Russian <img src="assets/rus-flag.png" alt="Russian flag" />
                 </label>
 
-                <label>
+                <!-- <label>
                     <input type="radio" name="language" value="japanese" />
                     Japanese <img src="assets/jpn-flag.png" alt="Japanese flag" />
-                </label>
+                </label> -->
             </div>
 
-            <button>Translate</button>
+            <button>Convert</button>
 
             <h3>Your translation</h3>
             <textarea id="translated-text"></textarea>
-            <button>Start Over</button>
+            <button value="button" id="copy-button">Copy</button>
+            <!-- <button>Start Over</button> -->
         </form>
 
         <script src="index.js" type="module"></script>
