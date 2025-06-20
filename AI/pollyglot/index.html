@@ -2,10 +2,13 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+        <title>PolyGlot Translator</title>
     </head>
     <body>
         <header>
-            <!-- <img src="assets/worldmap.png" alt="Worldmap background" /> -->
             <img src="assets/parrot.png" alt="Parrot" class="img-parrot" />
             <div>
                 <h1>PollyGlot</h1>
@@ -15,23 +18,23 @@
 
         <form id="translation-form">
             <h3>Text to translate</h3>
-            <textarea id="source-text" placeholder="How are you?"></textarea>
+            <textarea id="source-text" placeholder="Type your text"></textarea>
 
             <h3>Select language:</h3>
 
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="language" value="french" id="french" checked />
+                    <input type="radio" name="language" value="french" checked />
                     French <img src="assets/fr-flag.png" alt="French flag" />
                 </label>
 
                 <label>
-                    <input type="radio" name="language" value="spanish" id="spanish" />
+                    <input type="radio" name="language" value="spanish" />
                     Spanish <img src="assets/sp-flag.png" alt="Spanish flag" />
                 </label>
 
                 <label>
-                    <input type="radio" name="language" value="japanese" id="japanese" />
+                    <input type="radio" name="language" value="japanese" />
                     Japanese <img src="assets/jpn-flag.png" alt="Japanese flag" />
                 </label>
             </div>
@@ -39,7 +42,7 @@
             <button>Translate</button>
 
             <h3>Your translation</h3>
-            <textarea id="translated-text" placeholder="Comment allez-vous?"></textarea>
+            <textarea id="translated-text"></textarea>
             <button>Start Over</button>
         </form>
 

@@ -1,34 +1,16 @@
-/*
-Big Shoulders Display
-Extrabold
-43px
-12px
+/* === Theme Variables === */
+:root {
+    --blue: #035a9d;
+    --white: #ffffff;
+    --green: #32cd32;
+    --dark: #333333;
+    --border: #586e88;
+    --form-border: #252f42;
+    --gray: #eff0f4;
+    --radius: 8px;
+}
 
-
-
-
-Poppins
-semibold
-bold
-20px
-24px
-
-
-
-#035A9D blue
-#FFFFFF white
-#32CD32 green
-#333333 black
-
-#586E88 black border
-#252F42 black form border
-
-#EFF0F4 grey
-
-width 390
-height 780
-
-*/
+/* === Reset & Base === */
 *,
 *::before,
 *::after {
@@ -43,32 +25,30 @@ html {
 }
 
 body {
-    background-color: #fff;
-    width: 390px;
+    background-color: var(--white);
+    color: var(--dark);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    width: 100%;
+    max-width: 390px;
     margin: 0 auto;
+    padding: 20px 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    /* height: 780px; */
-    padding-bottom: 5px;
+    min-height: 100vh;
 }
 
+/* === Header === */
 header {
     background-image: url('assets/worldmap.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 390px;
+    width: 100%;
     height: 213px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-h1 {
-    color: #32cd32;
-}
-
-.p-header {
-    color: #ffffff;
+    gap: 16px;
 }
 
 .img-parrot {
@@ -76,63 +56,105 @@ h1 {
     height: 85px;
 }
 
+header h1 {
+    font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 800;
+    font-size: 43px;
+    color: var(--green);
+}
+
+.p-header {
+    color: var(--white);
+}
+
+/* === Form === */
 #translation-form {
-    border: 4px solid #252f42;
+    border: 4px solid var(--form-border);
     margin: 30px 13px;
     border-radius: 10px;
-    /* height: 480px; */
-    padding: 20px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
+/* === Headings === */
 h3 {
-    color: #035a9d;
+    color: var(--blue);
     font-size: 20px;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
+/* === Textareas === */
 textarea {
-    background-color: #eff0f4;
-    width: 317px;
+    background-color: var(--gray);
+    width: 100%;
     height: 118px;
     resize: none;
-    border-radius: 8px;
+    border-radius: var(--radius);
     padding: 8px;
+    border: 1px solid var(--border);
     outline: none;
-    color: #333333;
+    color: var(--dark);
     font-size: 20px;
-    margin-bottom: 14px;
+    font-family: 'Poppins', sans-serif;
 }
 
+textarea:focus {
+    border: 2px solid var(--border);
+}
+
+/* === Buttons === */
 button {
-    width: 320px;
+    width: 100%;
     height: 50px;
-    background-color: #035a9d;
-    color: #ffffff;
+    background-color: var(--blue);
+    color: var(--white);
     border: none;
     border-radius: 6px;
     font-size: 24px;
-    margin-bottom: 10px;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
+button:hover,
+button:focus {
+    background-color: #024c85;
+    outline: none;
+}
+
+/* === Radio Group === */
 .radio-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    color: #333333;
     font-size: 24px;
-    padding-bottom: 40px;
+    color: var(--dark);
+    padding-bottom: 20px;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    accent-color: var(--blue);
 }
 
 .radio-group img {
     width: 30px;
     height: 20px;
+    object-fit: cover;
+    display: block;
     position: relative;
-    top: 4px;
-    /* padding-left: 12px; */
+    top: 2px;
 }
 
 .radio-group img[alt='Japanese flag'] {
     border: 2px solid #999999;
+    border-radius: 2px;
 }
