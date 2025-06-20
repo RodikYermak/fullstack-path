@@ -46,7 +46,8 @@ body {
     background-color: #fff;
     width: 390px;
     margin: 0 auto;
-    /* height: 780px; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    height: 780px;
 }
 
 header {
@@ -72,4 +73,11 @@ h1 {
 .img-parrot {
     width: 95px;
     height: 85px;
+}
+
+#translation-form {
+    border: 4px solid #252f42;
+    margin: 30px 13px;
+    border-radius: 10px;
+    height: 480px;
 }
