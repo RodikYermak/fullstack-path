@@ -7,25 +7,34 @@
         <!-- Your HTML here -->
         <h1>PollyGlot goes here</h1>
         <header>
+            <img src="assets/worldmap.png" alt="Worldmap background" />
             <img src="assets/parrot.png" alt="Parrot" />
+            <h1>PollyGlot</h1>
+            <p>Perfect Translation Every Time</p>
         </header>
 
         <form id="translation-form">
             <h3>Text to translate</h3>
-            <input type="text" placeholder="How are you?" name="text" required />
+            <textarea placeholder="How are you?"></textarea>
 
-            <p>Select languages:</p>
+            <p>Select language:</p>
 
             <input type="radio" name="language" value="french" id="french" required />
-            <label for="french">French</label>
+            <label for="french">French <img src="assets/fr-flag.png" alt="French flag" /></label>
 
             <input type="radio" name="language" value="spanish" id="spanish" />
-            <label for="spanish">Spanish</label>
+            <label for="spanish">Spanish <img src="assets/sp-flag.png" alt="Spanish flag" /></label>
 
             <input type="radio" name="language" value="japanese" id="japanese" />
-            <label for="japanese">Japanese</label>
+            <label for="japanese"
+                >Japanese <img src="assets/jpn-flag.png" alt="Japanese flag"
+            /></label>
 
-            <button type="submit">Translate</button>
+            <button>Translate</button>
+
+            <h3>Your translation</h3>
+            <textarea placeholder="Comment allez-vous?"></textarea>
+            <button>Start Over</button>
         </form>
 
         <script src="index.js" type="module"></script>
