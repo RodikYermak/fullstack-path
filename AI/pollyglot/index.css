@@ -47,7 +47,8 @@ body {
     width: 390px;
     margin: 0 auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    height: 780px;
+    /* height: 780px; */
+    padding-bottom: 5px;
 }
 
 header {
@@ -79,5 +80,45 @@ h1 {
     border: 4px solid #252f42;
     margin: 30px 13px;
     border-radius: 10px;
-    height: 480px;
+    /* height: 480px; */
+    padding: 20px;
+}
+
+h3 {
+    color: #035a9d;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+textarea {
+    background-color: #eff0f4;
+    width: 317px;
+    height: 118px;
+    resize: none;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    color: #333333;
+    font-size: 20px;
+    margin-bottom: 28px;
+}
+
+button {
+    width: 320px;
+    height: 50px;
+    background-color: #035a9d;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    color: #333333;
+    font-size: 20px;
+    padding-bottom: 40px;
 }
