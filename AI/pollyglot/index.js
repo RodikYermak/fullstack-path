@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     copyButton.textContent = 'Copy';
                 }, 1500);
+                translatedTextArea.value = '';
             })
             .catch((err) => {
                 console.error('Copy failed:', err);
