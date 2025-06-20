@@ -101,7 +101,7 @@ textarea {
     outline: none;
     color: #333333;
     font-size: 20px;
-    margin-bottom: 28px;
+    margin-bottom: 14px;
 }
 
 button {
@@ -113,12 +113,26 @@ button {
     border-radius: 6px;
     font-size: 24px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .radio-group {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     color: #333333;
-    font-size: 20px;
+    font-size: 24px;
     padding-bottom: 40px;
+}
+
+.radio-group img {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+    /* padding-left: 12px; */
+}
+
+.radio-group img[alt='Japanese flag'] {
+    border: 2px solid #999999;
 }
