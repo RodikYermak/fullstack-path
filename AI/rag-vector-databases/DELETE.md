@@ -1,2 +1,0 @@
-SUPABASE_URL = https://owgjeczskvzoosjhpkzt.supabase.co
-SUPABASE_API_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im93Z2plY3pza3Z6b29zamhwa3p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzOTc2ODIsImV4cCI6MjA2Mzk3MzY4Mn0.i12fqr_A_HT0r-noV97saRApd2WCay2O-k09svZtex4
