@@ -22,6 +22,7 @@
 
 // main(podcasts);
 import { openai, supabase } from './config.js';
+import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
 const query = 'Something peaceful and relaxing';
 main(query);
@@ -29,7 +30,7 @@ main(query);
 async function main(input) {
     const embedding = await createEmbedding(input);
     const match = await findNearestMatch(embedding);
-    await getChatCompletion(match, input)
+    // await getChatCompletion(match, input)
 }
 
 async function createEmbedding(input) {
@@ -76,3 +77,16 @@ async function getChatCompletion(text, query) {
 
     console.log(response.choices[0].message.content);
 }
+
+async function splitDocument() {
+    const response = await fetch('podcasts.txt');
+    const text = await response.text();
+
+    const splitter = new RecursiveCharacterTextSplitter({
+        chunkSize: 150,
+        chunkOverlap: 15,
+    });
+    const output = await splitter.createDocuments([text]);
+    console.log(output);
+}
+splitDocument();
