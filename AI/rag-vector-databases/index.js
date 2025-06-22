@@ -96,36 +96,53 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 async function main() {}
 
 async function splitDocument(document) {
-    const response = await fetch(`${document}`);
-    const text = await response.text();
+    try {
+        const response = await fetch(`${document}`);
 
-    const splitter = new RecursiveCharacterTextSplitter({
-        chunkSize: 250,
-        chunkOverlap: 35,
-    });
-    const output = await splitter.createDocuments([text]);
-    console.log(output);
-    return output;
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+
+        const text = await response.text();
+
+        const splitter = new RecursiveCharacterTextSplitter({
+            chunkSize: 250,
+            chunkOverlap: 35,
+        });
+        const output = await splitter.createDocuments([text]);
+        console.log(output);
+        return output;
+    } catch (err) {
+        console.error('There was an issue with splitting text');
+        throw err;
+    }
 }
 
 async function createAndStoreEmbeddings() {
-    const chunkData = await splitDocument('movies.txt');
+    try {
+        const chunkData = await splitDocument('movies.txt');
 
-    const data = await Promise.all(
-        chunkData.map(async (textChunk) => {
-            const embeddingResponse = await openai.embeddings.create({
-                model: 'text-embedding-ada-002',
-                input: textChunk.pageContent,
-            });
-            return {
-                content: textChunk.pageContent,
-                embedding: embeddingResponse.data[0].embedding,
-            };
-        })
-    );
+        const data = await Promise.all(
+            chunkData.map(async (textChunk) => {
+                const embeddingResponse = await openai.embeddings.create({
+                    model: 'text-embedding-ada-002',
+                    input: textChunk.pageContent,
+                });
+                return {
+                    content: textChunk.pageContent,
+                    embedding: embeddingResponse.data[0].embedding,
+                };
+            })
+        );
 
-    await supabase.from('movies').insert(data);
-    console.log('Embedding and storing complete!');
+        const { error } = await supabase.from('movies').insert(data);
+        if (error) {
+            throw new Error('Issue inserting data into the database.');
+        }
+        console.log('Embedding and storing complete!');
+    } catch (e) {
+        console.error('ERROR: ' + e.message);
+    }
 }
 
-createAndStoreEmbeddings();
+// createAndStoreEmbeddings();
