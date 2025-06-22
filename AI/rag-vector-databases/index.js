@@ -90,59 +90,121 @@
 //     console.log(output);
 // }
 // splitDocument();
-import { openai, supabase } from './config.js';
-import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
+// import { openai, supabase } from './config.js';
+// import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 
-async function main() {}
+// async function main() {}
 
-async function splitDocument(document) {
-    try {
-        const response = await fetch(`${document}`);
+// async function splitDocument(document) {
+//     try {
+//         const response = await fetch(`${document}`);
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok.');
+//         }
 
-        const text = await response.text();
+//         const text = await response.text();
 
-        const splitter = new RecursiveCharacterTextSplitter({
-            chunkSize: 250,
-            chunkOverlap: 35,
-        });
-        const output = await splitter.createDocuments([text]);
-        console.log(output);
-        return output;
-    } catch (err) {
-        console.error('There was an issue with splitting text');
-        throw err;
-    }
-}
+//         const splitter = new RecursiveCharacterTextSplitter({
+//             chunkSize: 250,
+//             chunkOverlap: 35,
+//         });
+//         const output = await splitter.createDocuments([text]);
+//         console.log(output);
+//         return output;
+//     } catch (err) {
+//         console.error('There was an issue with splitting text');
+//         throw err;
+//     }
+// }
 
-async function createAndStoreEmbeddings() {
-    try {
-        const chunkData = await splitDocument('movies.txt');
+// async function createAndStoreEmbeddings() {
+//     try {
+//         const chunkData = await splitDocument('movies.txt');
 
-        const data = await Promise.all(
-            chunkData.map(async (textChunk) => {
-                const embeddingResponse = await openai.embeddings.create({
-                    model: 'text-embedding-ada-002',
-                    input: textChunk.pageContent,
-                });
-                return {
-                    content: textChunk.pageContent,
-                    embedding: embeddingResponse.data[0].embedding,
-                };
-            })
-        );
+//         const data = await Promise.all(
+//             chunkData.map(async (textChunk) => {
+//                 const embeddingResponse = await openai.embeddings.create({
+//                     model: 'text-embedding-ada-002',
+//                     input: textChunk.pageContent,
+//                 });
+//                 return {
+//                     content: textChunk.pageContent,
+//                     embedding: embeddingResponse.data[0].embedding,
+//                 };
+//             })
+//         );
 
-        const { error } = await supabase.from('movies').insert(data);
-        if (error) {
-            throw new Error('Issue inserting data into the database.');
-        }
-        console.log('Embedding and storing complete!');
-    } catch (e) {
-        console.error('ERROR: ' + e.message);
-    }
-}
+//         const { error } = await supabase.from('movies').insert(data);
+//         if (error) {
+//             throw new Error('Issue inserting data into the database.');
+//         }
+//         console.log('Embedding and storing complete!');
+//     } catch (e) {
+//         console.error('ERROR: ' + e.message);
+//     }
+// }
 
 // createAndStoreEmbeddings();
+import { openai, supabase } from './config.js';
+
+const query = 'Which movie can I take my child to?';
+main(query);
+
+async function main(input) {
+    try {
+        const embedding = await createEmbedding(input);
+        const match = await findNearestMatch(embedding);
+        await getChatCompletion(match, input);
+    } catch (error) {
+        console.error('Error in main function.', error);
+    }
+}
+
+async function createEmbedding(input) {
+    const embeddingResponse = await openai.embeddings.create({
+        model: 'text-embedding-ada-002',
+        input,
+    });
+    return embeddingResponse.data[0].embedding;
+}
+
+async function findNearestMatch(embedding) {
+    const { data } = await supabase.rpc('match_movies', {
+        query_embedding: embedding,
+        match_threshold: 0.5,
+        match_count: 47,
+    });
+
+    const match = data.map((obj) => obj.content).join('\n');
+    console.log(match);
+    return match;
+}
+
+const chatMessages = [
+    {
+        role: 'system',
+        content: `You are an enthusiastic movie expert who loves recommending movies to people. You
+    will be given two pieces of information - some context about movies and a question. Your main 
+    job is to formulate a short answer to the question using the provided context. If you are
+    unsure and cannot find the answer in the context, say, "Sorry, I don't know the answer." Please
+    do not make up the answer.
+    `,
+    },
+];
+
+async function getChatCompletion(text, query) {
+    chatMessages.push({
+        role: 'user',
+        content: `Context: ${text} Question: ${query}`,
+    });
+
+    const response = await openai.chat.completions.create({
+        model: 'gpt-4',
+        messages: chatMessages,
+        temperature: 0.5,
+        frequency_penalty: 0.5,
+    });
+
+    console.log(response.choices[0].message.content);
+}
