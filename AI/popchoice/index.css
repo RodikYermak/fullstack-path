@@ -1,9 +1,23 @@
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     background-color: #000c36;
     color: #ffffff;
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
 }
 
 /*
@@ -19,3 +33,34 @@ Fonts
 "Roboto Slab" by Google Fonts
 
 */
+.action-btn {
+    background-color: #51e08a;
+    width: 325px;
+    height: 70px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 300px;
+    height: 60px;
+    border-radius: 8px;
+    resize: none;
+    font-family: 'Roboto Slab', serif;
+    padding: 9px;
+    background-color: #3b4877;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.logo {
+    margin: 20px 70px;
+}
+
+p {
+    margin-bottom: 10px;
+    width: 310px;
+}
