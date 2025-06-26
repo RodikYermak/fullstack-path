@@ -11,7 +11,6 @@ Building a ReAct Agent
 Building an OpenAI Functions Agent
 Automatic Function Calling
 
-
 Prompt engineering is the art of getting AI to do what you want
 
 Be specific
