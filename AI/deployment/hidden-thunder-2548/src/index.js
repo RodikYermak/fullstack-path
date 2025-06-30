@@ -44,7 +44,7 @@
 // 03 Save API key to your environment
 // 04 Make an OpenAI request
 
-import { dates } from '/utils/dates';
+import { dates } from './utils/dates';
 
 const tickersArr = [];
 
