@@ -29,11 +29,7 @@ summaryLengthInput.addEventListener('input', updateSummaryLengthText)
 
 // Button Event Handlers
 function summarize() {
-    // ***********
-    // CHALLENGE:
-    // ***********
-    // Call the startLoading() function
-    
+    startLoading();
 }
 
 async function copy() {
