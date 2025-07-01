@@ -1,8 +1,3 @@
-// ***********
-// CHALLENGE:
-// ***********
-// Add all the code necessary to talk to Claude, asking it to describe the image. Figure out what the system prompt and the user prompt will be. When you get back the description in the response, display it in the UI.
-
 // Imports
 import Anthropic from '@anthropic-ai/sdk';
 import { fetchImageAndReturnBase64ImageData } from '/utils/fetchImageAndReturnBase64ImageData';
