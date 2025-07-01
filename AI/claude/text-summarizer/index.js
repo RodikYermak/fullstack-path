@@ -59,9 +59,11 @@ async function summarize() {
             ],
         });
         endLoading();
-        console.log(response.content[0].text);
-        console.log(length);
         summaryOutputArea.value = response.content[0].text;
+
+        enableSummaryOutputArea();
+        enableCopyButton();
+        focusOnCopyButton();
     } catch (e) {
         handleError(e);
     }
@@ -212,7 +214,7 @@ function enableCopyButton() {
     copyButton.disabled = false;
 }
 
-function enableSummayOutputArea() {
+function enableSummaryOutputArea() {
     summaryOutputArea.disabled = false;
 }
 
