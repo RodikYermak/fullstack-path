@@ -39,18 +39,19 @@ summaryLengthInput.addEventListener('input', updateSummaryLengthText);
 async function summarize() {
     startLoading();
     const text = textInputArea.value;
+    const length = summaryLengthInput.value;
 
     const response = await anthropic.messages.create({
         model: 'claude-3-5-sonnet-20240620',
         max_tokens: 300,
-        system: 'You are a text summarizer. When asked to summarize a text, send back the summary.',
+        system: 'You are a text summarizer. When asked to summarize a text, send back the summary of it. Please only send back the summary without prefixing it with things like "Summary" or telling where the text is from. Also give me the summary as if the original author wrote it and without using a third person voice.',
         messages: [
             {
                 role: 'user',
                 content: [
                     {
                         type: 'text',
-                        text: `Summarize this text: ${text}`,
+                        text: `Summarize this text. Limit the length to ${length} words: ${text}`,
                     },
                 ],
             },
@@ -58,6 +59,7 @@ async function summarize() {
     });
     endLoading();
     console.log(response.content[0].text);
+    console.log(length);
     summaryOutputArea.value = response.content[0].text;
 }
 
