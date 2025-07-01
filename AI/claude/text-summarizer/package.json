@@ -1,0 +1,14 @@
+{
+    "name": "Scrim-s06imjk",
+    "description": "https://scrimba.com/claude-ai-c09gsmkso3/~0q3/s00t1a9qkl/head",
+    "scripts": {
+        "start": "vite",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.55.1",
+        "vite": "latest"
+    }
+}
