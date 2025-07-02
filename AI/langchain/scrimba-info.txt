@@ -2,7 +2,7 @@ Main Faqs
 
 What programming languages and frameworks does the platform cover?
 Our Frontend Developer Career Path uses HTML, CSS and JavaScript before moving on to React.
-We also have an AI Engineering Path aimed at devs who want to learn about implementing AI solutions. 
+We also have an AI Engineering Path aimed at devs who want to learn about implementing AI solutions.
 
 Does the platform offer project-based learning where I can build real-world projects?
 Yes. All of our projects use real-world examples and all of our learning is project based.
@@ -53,7 +53,7 @@ Study Groups
 Your Discord Study Group consists of peers who share your goals. Think of it as a friendly space to get help, companionship, and encouragement.
 When you first join the group, we encourage you to reach out to your group and let them know about you, your background, and your coding journey. It’s important to be active, post daily, and be sure to join our weekly sessions. The more you get involved, the more you’ll benefit from it and get the most out of your Bootcamp learning experience.
 
-Common study group posts to help you stay on track: 
+Common study group posts to help you stay on track:
 
 Weekly learning commitments (”This week I will...”)
 Daily check-ins (”Today I will... ”)
@@ -62,7 +62,7 @@ Learning challenges and wins
 Key takeaways or highlights from your code reviews
 
 Virtual Meetups
-You'll join weekly calls led by a Bootcamp mentor. The purpose of these sessions is to help give your week structure and increase your connection with peers. During these check-ins you can meet peers and your group leader, reflect on the previous week, ask questions, etc. 
+You'll join weekly calls led by a Bootcamp mentor. The purpose of these sessions is to help give your week structure and increase your connection with peers. During these check-ins you can meet peers and your group leader, reflect on the previous week, ask questions, etc.
 We frequently invite Scrimba teachers, code reviewers, and professional developers to chat with the group and answer questions. You'll also share wins, challenges, or anything you need support with. Each session is usually 1hr long, and you'll choose the session that best fits your schedule. Or feel free to attend all three.
 
 Mondays - 4pm CET / 10am EST / 7am PST
@@ -76,7 +76,7 @@ Each week, Bootcamp mentors are available in the #student-sessions channel at va
 Your #student-sessions Discord channel is also a voice channel where you can have a chat with Bootcamp members at any time. We encourage you to jump into the channel when it's active and share your daily learning goals, what you're working on, any challenges with a course or project, what you're learning, or just catch up with other students and say hi.
 
 Code Reviews
-When you complete a Solo Project, you will be able to submit it to Scrimba so that one of our vetted teacher's assistants can give you a scrim-based code review. To submit a Solo Project for code review, type /review on any Discord channel and follow the Pumpkin bot's link. 
+When you complete a Solo Project, you will be able to submit it to Scrimba so that one of our vetted teacher's assistants can give you a scrim-based code review. To submit a Solo Project for code review, type /review on any Discord channel and follow the Pumpkin bot's link.
 The turnaround time is roughly 24 hours after submitting your Solo Project for review. We'll notify you when your code review is complete in the #code-reviews channel on Discord.
 You must submit your Solo Project as a scrim to get a code review.
 
@@ -93,7 +93,7 @@ You may also schedule a 1-1 call with a mentor or teacher to discuss coding ques
 Resources
 
 Bootcamp FAQs
-What is a Solo Project? 
+What is a Solo Project?
 
 A Solo Project is one of the projects you'll need to complete as part of the Frontend Developer Career Path. Currently, there are 13+ Solo Projects within the 15 modules, and we're working on adding more soon.
 

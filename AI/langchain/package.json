@@ -8,8 +8,8 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@supabase/supabase-js": "^2.50.3",
         "langchain": "0.0.151",
         "vite": "latest"
-    },
-    "devDependencies": {}
+    }
 }
