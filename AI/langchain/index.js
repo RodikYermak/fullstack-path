@@ -1,42 +1,45 @@
-import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
-import { createClient } from '@supabase/supabase-js';
-import { SupabaseVectorStore } from 'langchain/vectorstores/supabase';
-import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
+import { ChatOpenAI } from 'langchain/chat_models/openai';
+import { PromptTemplate } from 'langchain/prompts';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_API_KEY = import.meta.env.VITE_SUPABASE_API_KEY;
+document.addEventListener('submit', (e) => {
+    e.preventDefault();
+    progressConversation();
+});
+
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+const llm = new ChatOpenAI({ openAIApiKey: OPENAI_API_KEY });
 
-async function ingestTextToSupabase() {
-    try {
-        const response = await fetch('scrimba-info.txt');
-        if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
-        const text = await response.text();
+const standaloneQuestionTemplate =
+    'Given a question, convert it to a standalone question. question: {question} standalone question:';
 
-        const splitter = new RecursiveCharacterTextSplitter({
-            chunkSize: 500,
-            chunkOverlap: 50,
-            separators: ['\n\n', '\n', ' ', ''], // default setting
-        });
+const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionTemplate);
 
-        const documents = await splitter.createDocuments([text]);
+const standaloneQuestionChain = standaloneQuestionPrompt.pipe(llm);
 
-        if (!SUPABASE_URL || !SUPABASE_API_KEY || !OPENAI_API_KEY) {
-            throw new Error('Missing one or more required environment variables.');
-        }
+const response = await standaloneQuestionChain.invoke({
+    question:
+        'What are the technical requirements for running Scrimba? I only have a very old laptop which is not that powerful.',
+});
 
-        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_API_KEY);
-        const embeddings = new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY });
+console.log(response);
 
-        await SupabaseVectorStore.fromDocuments(documents, embeddings, {
-            client: supabaseClient,
-            tableName: 'documents_lang',
-        });
+async function progressConversation() {
+    const userInput = document.getElementById('user-input');
+    const chatbotConversation = document.getElementById('chatbot-conversation-container');
+    const question = userInput.value;
+    userInput.value = '';
 
-        console.log('Document successfully embedded and stored.');
-    } catch (err) {
-        console.log('Error during ingestion:', err);
-    }
+    // add human message
+    const newHumanSpeechBubble = document.createElement('div');
+    newHumanSpeechBubble.classList.add('speech', 'speech-human');
+    chatbotConversation.appendChild(newHumanSpeechBubble);
+    newHumanSpeechBubble.textContent = question;
+    chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+
+    // add AI message
+    const newAiSpeechBubble = document.createElement('div');
+    newAiSpeechBubble.classList.add('speech', 'speech-ai');
+    chatbotConversation.appendChild(newAiSpeechBubble);
+    newAiSpeechBubble.textContent = result;
+    chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 }
-
-// ingestTextToSupabase();
