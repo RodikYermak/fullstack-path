@@ -1,11 +1,10 @@
-import 'dotenv/config';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { PromptTemplate } from 'langchain/prompts';
 import { StringOutputParser } from 'langchain/schema/output_parser';
 import { RunnableSequence, RunnablePassthrough } from 'langchain/schema/runnable';
+import { OPENAI_API_KEY } from './config.js';
 
-const openAIApiKey = process.env.OPENAI_API_KEY;
-const llm = new ChatOpenAI({ openAIApiKey });
+const llm = new ChatOpenAI({ openAIApiKey: OPENAI_API_KEY });
 
 const punctuationTemplate = `Given a sentence, add punctuation where needed.
     sentence: {sentence}
