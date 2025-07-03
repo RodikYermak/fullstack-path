@@ -65,13 +65,6 @@ const chain = RunnableSequence.from([
     answerChain,
 ]);
 
-const response = await chain.invoke({
-    question:
-        'What are the technical requirements for running Scrimba? I only have a very old laptop which is not that powerful.',
-});
-
-console.log(response);
-
 async function progressConversation() {
     const userInput = document.getElementById('user-input');
     const chatbotConversation = document.getElementById('chatbot-conversation-container');
@@ -84,15 +77,18 @@ async function progressConversation() {
     chatbotConversation.appendChild(newHumanSpeechBubble);
     newHumanSpeechBubble.textContent = question;
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+    const response = await chain.invoke({
+        question: question,
+    });
 
     // add AI message
     const newAiSpeechBubble = document.createElement('div');
     newAiSpeechBubble.classList.add('speech', 'speech-ai');
     chatbotConversation.appendChild(newAiSpeechBubble);
-    newAiSpeechBubble.textContent = result;
+    newAiSpeechBubble.textContent = response;
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
 }
 
-function combineDocuments(docs){
-    return docs.map((doc)=>doc.pageContent).join('\n\n')
+function combineDocuments(docs) {
+    return docs.map((doc) => doc.pageContent).join('\n\n');
 }
