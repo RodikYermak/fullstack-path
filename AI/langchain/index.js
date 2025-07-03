@@ -1,27 +1,39 @@
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { PromptTemplate } from 'langchain/prompts';
+import { SupabaseVectorStore } from 'langchain/vectorstores/supabase';
+import { OPENAI_API_KEY, supabaseClient, embeddings } from './config.js';
 
 document.addEventListener('submit', (e) => {
     e.preventDefault();
     progressConversation();
 });
 
-const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
-const llm = new ChatOpenAI({ openAIApiKey: OPENAI_API_KEY });
+const vectorStore = new SupabaseVectorStore(embeddings, {
+    client: supabaseClient,
+    tableName: 'documents_lang',
+    queryName: 'match_documents',
+});
 
-const standaloneQuestionTemplate =
-    'Given a question, convert it to a standalone question. question: {question} standalone question:';
+const retriever = vectorStore.asRetriever();
 
-const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionTemplate);
+function createStandaloneQuestionChain(apiKey) {
+    const llm = new ChatOpenAI({ openAIApiKey: apiKey });
+    const template = PromptTemplate.fromTemplate(
+        'Given a question, convert it to a standalone question. question: {question} standalone question:'
+    );
+    return template.pipe(llm);
+}
 
-const standaloneQuestionChain = standaloneQuestionPrompt.pipe(llm);
+const standaloneQuestionChain = createStandaloneQuestionChain(OPENAI_API_KEY);
 
 const response = await standaloneQuestionChain.invoke({
     question:
         'What are the technical requirements for running Scrimba? I only have a very old laptop which is not that powerful.',
 });
 
-console.log(response);
+const response2 = await retriever.invoke('Will Scrimba work on an old laptop?');
+
+console.log(response2);
 
 async function progressConversation() {
     const userInput = document.getElementById('user-input');
