@@ -21,7 +21,7 @@ document.addEventListener('submit', (e) => {
 const llm = new ChatOpenAI({ openAIApiKey: OPENAI_API_KEY });
 const embeddings = new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY });
 
-const standaloneQuestionTemplate = `Given a question, convert it ti a standalone question.
+const standaloneQuestionTemplate = `Given a question, convert it to a standalone question.
 question: {question} standalone question:`;
 
 const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionTemplate);
@@ -29,7 +29,7 @@ const standaloneQuestionPrompt = PromptTemplate.fromTemplate(standaloneQuestionT
 const answerTemplate = `You are a helpful and enthusiastic support bot who can answer a given
 question about Scrimba based on the context provided. Try to find the answer in the context. If you
 really don't know the answer, say "I'm sorry, I don't know the answer to that." And direct the
-questioner to email help@scrimba.com. Don't try to make up an answer. Always speak as if you wer
+questioner to email help@scrimba.com. Don't try to make up an answer. Always speak as if you were
 chatting to a friend.
 context: {context}
 question: {question}
@@ -45,20 +45,24 @@ const vectorStore = new SupabaseVectorStore(embeddings, {
 
 const retriever = vectorStore.asRetriever();
 
+const standaloneQuestionChain = standaloneQuestionPrompt.pipe(llm).pipe(new StringOutputParser());
+const retrieverChain = RunnableSequence.from([
+    (prevResult) => prevResult.standalone_question,
+    retriever,
+    combineDocuments,
+]);
+const answerChain = answerPrompt.pipe(llm).pipe(new StringOutputParser());
+
 const chain = RunnableSequence.from([
-    standaloneQuestionPrompt,
-    llm,
-    new StringOutputParser(),
-    async (standaloneQuestion) => {
-        const docs = await retriever.invoke(standaloneQuestion);
-        return {
-            context: docs.map((doc) => doc.pageContent).join('\n\n'),
-            question: standaloneQuestion,
-        };
+    {
+        standalone_question: standaloneQuestionChain,
+        original_input: new RunnablePassthrough(),
     },
-    answerPrompt,
-    llm,
-    new StringOutputParser(),
+    {
+        context: retrieverChain,
+        question: ({ original_input }) => original_input.question,
+    },
+    answerChain,
 ]);
 
 const response = await chain.invoke({
@@ -67,10 +71,6 @@ const response = await chain.invoke({
 });
 
 console.log(response);
-
-const response2 = await retriever.invoke('Will Scrimba work on an old laptop?');
-
-console.log(response2);
 
 async function progressConversation() {
     const userInput = document.getElementById('user-input');
@@ -91,4 +91,8 @@ async function progressConversation() {
     chatbotConversation.appendChild(newAiSpeechBubble);
     newAiSpeechBubble.textContent = result;
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight;
+}
+
+function combineDocuments(docs){
+    return docs.map((doc)=>doc.pageContent).join('\n\n')
 }
