@@ -75,3 +75,80 @@ Render:
 Event Handlers:
 
 -   handleIncrement: Increases the count state by `incrementValue`.
+
+PROMPT
+Create a pseudo language that will help me quickly describe to you how to provide sample code and styles
+for an HTML form. Respond with a template I can use, as well as sample element.
+
+FORM:
+
+-   ACTION: [URL]
+-   METHOD: [GET/POST/PUT/DELETE]
+-   INPUTS:
+    -   TYPE: [text/password/email/checkbox/radio...]
+        LABEL: [Label text]
+        ATTRIBUTES: - [Attribute Name]: [Attribute Value]
+        STYLES: - [CSS Property]: [CSS Value]
+        ...
+-   BUTTON:
+    -   TEXT: [Button text]
+    -   TYPE: [submit/reset/button]
+    -   STYLES:
+        -   [CSS Property]: [CSS Value]
+-   STYLES:
+    -   [CSS Property]: [CSS Value]
+
+FORM:
+
+-   ACTION: /submitForm
+-   METHOD: POST
+-   INPUTS:
+    -   TYPE: text
+        LABEL: Username
+        ATTRIBUTES:
+        -   name: username
+        -   required: true
+            STYLES:
+        -   width: 200px
+    -   TYPE: password
+        LABEL: Password
+        ATTRIBUTES:
+        -   name: password
+            STYLES:
+        -   width: 200px
+-   BUTTON:
+    -   TEXT: Submit
+    -   TYPE: submit
+    -   STYLES:
+        -   background-color: blue
+        -   color: white
+-   STYLES:
+    -   border: 1px solid gray
+    -   padding: 10px
+
+# Prompt 1
+
+Write a JavaScript function that takes in an array and returns a new array with any duplicate items fremoved.
+
+# Prompt 2
+
+List 8 edge cases this function should account for, and provide test cases for each.
+
+1. Empty array
+2. Array with a single element
+3. Array with all elements the same
+4. Array with different types of elements (e.g., numbers, strings, booleans).
+5. Array with nested arrays: If the array contains other arrays, the function will not work as expected because JavaScript does not allow comparison of arrays like simple data types. For this, a more complex solution that handles deep equality is needed.
+6. Array with objects
+7. Non-array inputs
+8. Array with special numbers: (NaN and Infinity)
+
+# Testing a function for edge cases
+
+1. Take a minute to read and understand the chunkArray function
+2. Ask ChatGPT to generate 3 console.log statements to test the function.
+3. Prompt ChatGPt for 5 edge cases
+4. Read the edge cases and pick a couple you want your function to
+   account for (hint: some may involve infinite loops, so don't just run the test cases!)
+5. Ask ChatGPT to revise your function based on those edge cases. Be sure
+   to include instructions (or ask for suggestions) for how you want to deal with them!
