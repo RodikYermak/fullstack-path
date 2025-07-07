@@ -152,3 +152,8 @@ List 8 edge cases this function should account for, and provide test cases for e
    account for (hint: some may involve infinite loops, so don't just run the test cases!)
 5. Ask ChatGPT to revise your function based on those edge cases. Be sure
    to include instructions (or ask for suggestions) for how you want to deal with them!
+
+
+# Document Code
+Ask me 10 questions about best practices and style conventions and use my answers to write a style guide.
+
