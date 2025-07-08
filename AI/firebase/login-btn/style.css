@@ -1,0 +1,28 @@
+/* Add space at the top of the page */
+body {
+    margin-top: 100px; /* Pushes everything down */
+    font-family: sans-serif; /* Makes the text look cleaner */
+    background-color: #f0f0f0; /* Light gray background for better contrast */
+}
+
+/* Centers the button on the page */
+.button-container {
+    text-align: center; /* Horizontally centers content inside this div */
+}
+
+/* Style for the Twitter-like button */
+.twitter-button {
+    background-color: #1da1f2; /* Twitter blue */
+    color: white; /* Text color */
+    padding: 12px 24px; /* Adds space inside the button (top/bottom, left/right) */
+    border: none; /* Removes the default button border */
+    border-radius: 999px; /* Makes the button fully rounded */
+    font-size: 16px; /* Increases the text size */
+    cursor: pointer; /* Changes cursor to hand when hovering */
+    transition: background-color 0.3s; /* Smooth color change on hover */
+}
+
+/* Change the button color slightly when hovered */
+.twitter-button:hover {
+    background-color: #0d8ddb; /* Slightly darker blue on hover */
+}
