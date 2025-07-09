@@ -1,0 +1,41 @@
+/* Basic page setup with spacing */
+body {
+    margin-top: 100px; /* Adds space at the top of the page */
+    font-family: sans-serif; /* Uses a clean sans-serif font */
+    background-color: #f0f0f0; /* Light gray background for contrast */
+}
+
+/* Centers the button horizontally */
+.button-container {
+    text-align: center; /* Aligns contents in the center */
+}
+
+/* Main GitHub-style button */
+.github-button {
+    background-color: #24292d; /* Dark GitHub base color */
+    color: white; /* White text */
+    padding: 12px 20px; /* Adds space inside the button */
+    border: none; /* Removes default border */
+    border-radius: 6px; /* Slightly rounded corners */
+    font-size: 16px; /* Increases text size */
+    cursor: pointer; /* Changes cursor to a hand when hovered */
+    transition: background-color 0.2s ease; /* Smooth transition for hover/click */
+    display: inline-flex; /* Allows icon and text to sit nicely side-by-side */
+    align-items: center; /* Vertically center icon and text */
+    gap: 8px; /* Adds space between icon and text */
+}
+
+/* Hover state — slightly brighter */
+.github-button:hover {
+    background-color: #2f363d; /* Lighter version of the GitHub color */
+}
+
+/* Click/active state — even brighter */
+.github-button:active {
+    background-color: #3c444c; /* Brightest version when clicking */
+}
+
+/* Optional icon style */
+.github-icon {
+    font-size: 18px; /* Makes the icon match the text size */
+}

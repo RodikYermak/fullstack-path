@@ -1,0 +1,87 @@
+/* Set base styles for the entire page */
+body {
+    font-family: Arial, sans-serif; /* Use a clean, readable font */
+    background-color: #fce4ec; /* Light pink background */
+    margin: 0; /* Remove default spacing */
+    padding: 0;
+    text-align: center; /* Center everything on the page */
+}
+
+/* Style the header area */
+header {
+    background-color: #ff4081; /* Vibrant pink header */
+    color: white; /* White text */
+    padding: 20px; /* Add space inside the header */
+}
+
+/* Style the main content container */
+.container {
+    max-width: 600px; /* Limit width for readability */
+    margin: 30px auto; /* Center the container horizontally */
+    background-color: white; /* White background for content */
+    padding: 20px; /* Add space inside the box */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Style the input field */
+input[type='text'] {
+    padding: 10px; /* Space inside the input */
+    font-size: 16px; /* Make text readable */
+    width: 70%; /* Make it wide but not full width */
+    border: 2px solid #ff4081; /* Add border matching theme */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 10px; /* Space below the input */
+}
+
+/* Style the submit and draw buttons */
+button {
+    padding: 10px 20px; /* Add space around text */
+    font-size: 16px; /* Make text readable */
+    background-color: #ff4081; /* Main pink color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Show hand cursor on hover */
+    margin: 5px;
+    transition: background-color 0.3s ease; /* Smooth color change */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #e91e63; /* Slightly darker pink on hover */
+}
+
+/* Section spacing */
+section {
+    margin-bottom: 30px; /* Space between sections */
+}
+
+/* Style specifically for the reset button */
+#resetBtn {
+    background-color: #007bff; /* Blue reset button */
+}
+
+/* Hover state for reset button */
+#resetBtn:hover {
+    background-color: #1367c0; /* Darker blue on hover */
+}
+
+/* Style the list of participants */
+#participantList {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+#participantList li {
+    margin: 5px 0; /* Space between names */
+    font-weight: bold; /* Make names stand out */
+}
+
+/* Winner display styling */
+#winnerDisplay {
+    font-size: 24px; /* Big text for the winner */
+    font-weight: bold;
+    color: #4caf50; /* Bright green for winner */
+    margin-top: 15px; /* Space above the message */
+}
