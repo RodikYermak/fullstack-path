@@ -1,0 +1,188 @@
+/* === Root variables for full styling control === */
+:root {
+    /* Colors */
+    --color-bg-gradient: linear-gradient(135deg, #ff80ab, #8c9eff);
+    --color-text: #ffffff;
+    --color-highlight: #ffeb3b;
+    --color-accent: #00e676;
+    --color-accent-hover: #00c853;
+    --color-box-bg: rgba(0, 0, 0, 0.6);
+    --color-confirm-bg: #ffd740;
+    --color-confirm-text: #000000;
+
+    /* Fonts */
+    --font-family: 'Comic Sans MS', cursive, sans-serif;
+
+    /* Font Sizes */
+    --font-size-h1: 26px;
+    --font-size-h2: 18px;
+    --font-size-body: 16px;
+    --font-size-label: 16px;
+    --font-size-button: 18px;
+    --font-size-confirm: 16px;
+
+    /* Spacing */
+    --spacing-page: 20px;
+    --spacing-container-padding: 30px;
+    --spacing-form-gap: 15px;
+    --spacing-header-margin: 10px;
+    --spacing-section-margin: 25px;
+    --spacing-confirm-top: 20px;
+    --spacing-button-padding: 12px;
+    --spacing-input-padding: 10px;
+
+    /* Border radius */
+    --radius-box: 16px;
+    --radius-input: 8px;
+    --radius-button: 8px;
+    --radius-confirm: 8px;
+
+    /* Box shadow */
+    --shadow-box: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+    /* Breakpoints */
+    --breakpoint-mobile: 500px;
+
+    /* Font weight */
+    --weight-bold: bold;
+
+    /* Transition */
+    --transition-speed: 0.3s;
+}
+
+/* === Reset basic elements === */
+body,
+h1,
+h2,
+p,
+form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* === Body === */
+body {
+    background: var(--color-bg-gradient);
+    font-family: var(--font-family);
+    color: var(--color-text);
+    padding: var(--spacing-page);
+    height: 100vh;
+}
+
+/* === Container === */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    /* Update this line to use white with transparency */
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+
+    background-color: var(--color-box-bg);
+    border-radius: var(--radius-box);
+    padding: var(--spacing-container-padding);
+    box-shadow: var(--shadow-box);
+}
+
+/* === Headings === */
+h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: var(--spacing-header-margin);
+    text-align: center;
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-section-margin);
+    text-align: center;
+    color: var(--color-highlight);
+}
+
+/* === Description === */
+.description {
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-section-margin);
+    text-align: center;
+}
+
+/* === Form === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-form-gap);
+}
+
+/* === Label === */
+label {
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-label);
+}
+
+/* === Input and Select === */
+input,
+select {
+    padding: var(--spacing-input-padding);
+    border: none;
+    border-radius: var(--radius-input);
+    font-size: var(--font-size-body);
+}
+
+/* === Button === */
+button {
+    padding: var(--spacing-button-padding);
+    background-color: var(--color-accent);
+    color: var(--color-confirm-text);
+    font-weight: var(--weight-bold);
+    border: none;
+    border-radius: var(--radius-button);
+    font-size: var(--font-size-button);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* === Confirmation Message === */
+#confirmation-message {
+    display: none;
+    margin-top: var(--spacing-confirm-top);
+    padding: var(--spacing-button-padding);
+    background-color: var(--color-confirm-bg);
+    color: var(--color-confirm-text);
+    border-radius: var(--radius-confirm);
+    text-align: center;
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-confirm);
+}
+
+/* === Responsive for mobile === */
+@media (max-width: var(--breakpoint-mobile)) {
+    h1 {
+        font-size: 22px; /* Optional override for readability */
+    }
+    h2 {
+        font-size: 16px;
+    }
+    .container {
+        padding: var(--spacing-page);
+    }
+}
+
+/* === Add this at the bottom of your CSS === */
+
+/* Animated background for confirmed party guests */
+.body-party-mode {
+    background-image: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif'); /* Fun party GIF */
+    background-size: cover; /* Make the GIF fill the whole screen */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-position: center center; /* Center the image */
+}
+/* Sad mode background for non-attendees */
+.body-sad-mode {
+    background-image: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
