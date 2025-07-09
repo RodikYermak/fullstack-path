@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cake Raffle</title>
+
+        <!-- Link to the external CSS file -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Page header -->
+        <header>
+            <h1>Cake Raffle 🎂</h1>
+        </header>
+
+        <!-- Main content container -->
+        <div class="container">
+            <!-- Entry form section -->
+            <section class="entry-form">
+                <h2>Enter your name to join the raffle</h2>
+                <input type="text" id="nameInput" placeholder="Your name here..." />
+                <button id="submitBtn">Enter</button>
+            </section>
+
+            <!-- Participant list display -->
+            <section class="participants">
+                <h2>Participants</h2>
+                <ul id="participantList"></ul>
+            </section>
+
+            <!-- Draw button and winner display -->
+            <section class="draw-section">
+                <button id="drawBtn">🎲 Draw Winner</button>
+                <button id="resetBtn">🔁 Reset</button>
+                <div id="winnerDisplay"></div>
+            </section>
+        </div>
+
+        <!-- Link to external JavaScript -->
+        <script src="script.js"></script>
+    </body>
+</html>
