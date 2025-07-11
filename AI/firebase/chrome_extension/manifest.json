@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Shopping List Saver",
+    "description": "Save URLs into a categorized shopping list.",
+    "version": "1.0",
+    "permissions": ["tabs", "storage"],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "images/icon128.png"
+    }
+}
