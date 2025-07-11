@@ -1,0 +1,189 @@
+/* Dark, sleek mobile-first design for Smart Home Controller */
+
+/* ===== Base & Utilities ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle at top left, #491088 0%, #28074a 100%);
+    color: #ffffff;
+    padding: 1rem;
+}
+
+/* ===== Header ===== */
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #ff19db 0%, #ff7f1a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== Section Layout ===== */
+main {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.control-section {
+    background: linear-gradient(145deg, rgba(189, 77, 229, 0.15), rgba(108, 29, 208, 0.15));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    text-align: center;
+}
+
+.control-section h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ff7f1a;
+}
+
+/* ===== Toggle Switch (Lighting) ===== */
+.toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle {
+    position: relative;
+    width: 64px;
+    height: 34px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #6c1dd0 0%, #bd4de5 100%);
+    border-radius: 34px;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.slider:before {
+    content: '';
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle input:checked + .slider {
+    background: linear-gradient(135deg, #ff19db 0%, #ff7f1a 100%);
+}
+
+.toggle input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+/* ===== Buttons (Temperature & Music) ===== */
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+button {
+    flex: 1 1 30%;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: linear-gradient(135deg, #6c1dd0 0%, #bd4de5 100%);
+    border: none;
+    border-radius: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+button i {
+    font-size: 1.1rem;
+}
+
+button:active {
+    transform: scale(0.96);
+    /* Soft pink glow to match hover tint */
+    box-shadow: 0 0 12px 4px rgba(255, 25, 219, 0.6),
+        /* inner glow */ 0 0 24px 8px rgba(255, 25, 219, 0.45),
+        /* outer bloom */ 0 2px 4px rgba(0, 0, 0, 0.35); /* base shadow */
+}
+
+/* Optional accessibility: keep glow when focused via keyboard */
+button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 12px 4px rgba(255, 25, 219, 0.6), 0 0 24px 8px rgba(255, 25, 219, 0.45),
+        0 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+button:hover {
+    box-shadow: 0 4px 8px rgba(255, 25, 219, 0.35);
+}
+
+/* ===== Media Queries ===== */
+@media (min-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .control-section h2 {
+        font-size: 1.4rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}
