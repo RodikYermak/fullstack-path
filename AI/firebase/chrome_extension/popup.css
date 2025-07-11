@@ -1,26 +1,85 @@
 body {
-    font-family: sans-serif;
-    padding: 10px;
     width: 300px;
+    padding: 10px;
 }
 
-button {
-    margin-top: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
+h1,
+h2 {
+    color: #03045e;
 }
 
-#shopping-list {
-    margin-top: 15px;
-    list-style: none;
-    padding: 0;
+h2 {
+    margin-bottom: 0;
 }
 
-#shopping-list li {
-    margin-bottom: 8px;
-    font-size: 14px;
+h1 {
+    text-align: center;
 }
 
 a {
-    word-break: break-all;
+    color: #00b4d8;
+    line-height: 1.5;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+select {
+    flex: 1;
+}
+
+button {
+    background-color: #00a5cf;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: #08b4df;
+}
+
+select,
+button {
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.item-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.deleteButton {
+    border: none;
+    background-color: #e3e3e3;
+    color: #999;
+    cursor: pointer;
 }
