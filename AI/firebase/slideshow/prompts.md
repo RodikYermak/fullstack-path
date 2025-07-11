@@ -26,3 +26,20 @@ explaining each part's functionality.
 ## Prompt 2
 
 Please update the JavaScript code to automatically switch to the next slide every 5 seconds.
+
+## Kickoff
+
+With your guidance, I'd like to build a personal homepage using HTML and CSS.
+Please note that I'll only request specific code snippets as we progress,
+so there's no need to provide code until I explicitly ask for it.
+Are you ready to start?
+
+## HTML Structure
+
+Help me design a basic HTML structure for a personal homepage.
+It should have the following sections: a header, a section for
+displaying my projects, an about section, and a section for
+showcasing my skills. Also, include a footer.
+
+Please add these sections as placeholders for now, as we will be coding
+them and filling them out step by step.
