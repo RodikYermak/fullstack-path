@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FaceBomp</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <h1>FaceBomp</h1>
+
+        <div class="controls">
+            <button id="start-button">Start Game</button>
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Time: <span id="timer">30</span>s</div>
+        </div>
+
+        <div id="game-board">
+            <div class="hole">
+                <img src="photo.png" alt="Face" class="face hidden" draggable="false" />
+            </div>
+            <div class="hole">
+                <img src="photo.png" alt="Face" class="face hidden" draggable="false" />
+            </div>
+            <div class="hole">
+                <img src="photo.png" alt="Face" class="face hidden" draggable="false" />
+            </div>
+            <div class="hole">
+                <img src="photo.png" alt="Face" class="face hidden" draggable="false" />
+            </div>
+            <div class="hole">
+                <img src="photo.png" alt="Face" class="face hidden" draggable="false" />
+            </div>
+            <div class="hole">
+                <img src="photo.png" alt="Face" class="face hidden" draggable="false" />
+            </div>
+        </div>
+
+        <div id="final-message" class="hidden">
+            Game Over! Final Score: <span id="final-score">0</span>
+        </div>
+
+        <audio id="bomp-sound" src="sounds/kick.wav"></audio>
+        <script src="script.js"></script>
+    </body>
+</html>

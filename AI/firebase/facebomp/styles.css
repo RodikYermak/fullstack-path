@@ -1,0 +1,120 @@
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Body + Layout --- */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #00c6ff, #0072ff);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* --- Title --- */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Controls --- */
+.controls {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #0088cc;
+}
+
+/* --- Game Board Grid --- */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    gap: 30px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* --- Holes --- */
+.hole {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at center, #0059b3, #003d80);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Faces --- */
+.face {
+    width: 55%;
+    height: 55%;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: scale(0); /* start invisible */
+    transition: transform 0.15s ease-out;
+    outline: none; /* nuke focus outline */
+    -webkit-tap-highlight-color: transparent; /* mobile Safari/Chrome tap flash */
+    -webkit-user-drag: none; /* stop drag ghost */
+    user-select: none; /* stop selection glow */
+}
+
+.face:active {
+    /* Prevent any default active-state dimming */
+    opacity: 1;
+    filter: none;
+}
+
+.face.clicked {
+    border: 10px solid red;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Final Message --- */
+#final-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffecb3;
+    text-shadow: 1px 1px 4px #222;
+}
+
+/* --- Pop Animation --- */
+@keyframes popIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
