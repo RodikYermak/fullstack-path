@@ -71,6 +71,24 @@ main {
     color: #ff7f1a;
 }
 
+/* ===== Temperature Display ===== */
+.temp-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    color: #ff19db;
+    text-shadow: 0 0 10px rgba(255, 25, 219, 0.5);
+}
+
+/* ===== Music Display ===== */
+.song-display {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 1rem 0;
+    color: #ff7f1a;
+    text-shadow: 0 0 6px rgba(255, 127, 26, 0.4);
+}
+
 /* ===== Toggle Switch (Lighting) ===== */
 .toggle-wrapper {
     display: flex;
@@ -171,6 +189,7 @@ button:focus-visible {
 
 button:hover {
     box-shadow: 0 4px 8px rgba(255, 25, 219, 0.35);
+    background-color: #ff19db;
 }
 
 /* ===== Media Queries ===== */
