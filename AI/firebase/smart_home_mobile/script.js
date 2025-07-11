@@ -68,4 +68,10 @@ lightToggle.addEventListener('change', (e) => {
     console.log(`Lights ${isOn ? 'ON' : 'OFF'}`);
 });
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('/service-worker.js')
+        .then(() => console.log('✅ Service Worker registered'))
+        .catch((err) => console.error('⚠️ Service Worker error:', err));
+}
 // Add further smart-home integrations as needed

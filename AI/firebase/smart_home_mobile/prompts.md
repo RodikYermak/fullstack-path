@@ -91,4 +91,9 @@ Make sure the song name changes when a user clicks the next button.
 Style the song text accordingly with CSS.
 
 ## Prompt 8
+
 Help me name this smart home interface project by suggesting clever product names.
+
+### Prompt
+
+Please guide me through the necessary steps to make the Smart home interface more mobile-friendly by allowing users to add it to their device's home screen for easy access.
