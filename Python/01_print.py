@@ -1,5 +1,5 @@
-print('Welcome to Python 101!')
+print("Welcome to Python 101!")
 
-print('Create hammer')
-print('Use hammer')
-print('Use nails')
+print("Create hammer")
+print("Use hammer")
+print("Use nails")
