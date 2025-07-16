@@ -27,7 +27,7 @@ explaining the JavaScript's functionality.
 
 ## Prompt 3
 
-Allow the user to delete items from the shopping list permanently.
+Allow the user to delete items from the shopping list permanentlyllll.
 Each delete button should display a "delete" icon using an icon font.
 
 ## Prompt 4
