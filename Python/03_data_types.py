@@ -11,3 +11,10 @@ i = str(22)       # i will be '22'
 j = str(3.01)     # j will be '3.01'
 
 print([a,b,c,d,e,f,g,h,i,j])
+
+item_name = 'Item 1'
+price = 10.99
+inventory = 3
+is_in_inventory = True
+
+print(type(item_name), type(price), type(inventory), is_in_inventory)
