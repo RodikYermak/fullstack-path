@@ -43,8 +43,5 @@ while True:
         print('ACCESS GRANTED')
         approved.append((visitor_name, badge_number))
 
-print('Access Summary for Approved Visitors:')
 summary_print(approved, 'approved')
-
-print('Access Summary for Denied Visitors:')
 summary_print(denied, 'denied')
