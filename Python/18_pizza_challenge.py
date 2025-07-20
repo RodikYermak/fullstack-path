@@ -9,6 +9,7 @@ print('test')
 # 4. Add a method to print pizza details:
 #    - size, crust, and all toppings (or “No toppings yet!”)
 # 5. Create a pizza object, customize it, and print the summary
+import platform as pl, string, os
 
 class Pizza:
     def __init__(self, size=10, crust='thin', toppings=None):
@@ -39,3 +40,6 @@ p.add_topping('cheese')
 p.add_topping('philly steak')
 p.remove_topping('che')
 p.print_details()
+
+
+print(pl.python_version())
