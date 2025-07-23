@@ -1,2 +1,14 @@
+import random
+
 if 5 > 2:
     print('five')
+
+list = [1, 2, 3]
+
+# print(list)
+
+x = 35.99
+
+print(int(x))
+
+print(random.randrange(1, 10))
