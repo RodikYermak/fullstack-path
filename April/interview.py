@@ -40,7 +40,7 @@ a.get_variable(variable='USER.test.test.test') -> None	# hasn't been set
 #                     "years_studied": self.value
 #                 },
 #                 "general": {
-#                     "name": { 
+#                     "name": {
 #                         "last_name": self.value,
 #                         "first_name": self.value
 #                 },
@@ -56,35 +56,36 @@ class Profile:
         self.data = {}
 
     def set_variable(self, variable, value):
-        print(variable)
-        dictionary = self.data
         keys_list = variable.split('.')
-        print(keys_list)
-        print(dictionary)
+        dictionary = self.data
         for key in keys_list[:-1]:
-            dictionary.setdefault(key, {})
-        dictionary.update({keys_list[-1]: value})
+            dictionary = dictionary.setdefault(key, {})
+            dictionary.update({keys_list[-1]: value})
 
-        print(dictionary)
-
-    def get_variable(self):
-        pass
+    def get_variable(self, variable):
+        keys_list = variable.split('.')
+        dictionary = self.data
+        for key in keys_list:
+            dictionary = dictionary.get(key)
+            if dictionary is None:
+                return None
+        return dictionary
 
 # TEST
 
 a = Profile()
 
 a.set_variable(variable='USER.general.name.last_name', value='Last')
-# a.set_variable(variable='USER.general.name.first_name', value='First')
-# print(a.get_variable(variable='USER.general.name.last_name')) # 'Last'
-# print(a.get_variable(variable='USER.general.name.first_name')) # 'First'
-# print(a.get_variable(variable='USER.general.name')) # { 'first_name': 'First', 'last_name': 'Last' }
-# print(a.get_variable(variable='USER.general')) # { 'name': { 'first_name': 'First', 'last_name': 'Last' } }
-# a.set_variable(variable='USER.education.degree', value='BA')
-# a.set_variable(variable='USER.education.degree', value='MBA')
-# print(a.get_variable(variable='USER.education.degree')) # 'MBA'
-# a.set_variable(variable='USER.education.years_studied', value=4)
-# print(a.get_variable(variable='USER.education.years_studied')) # 4
-# print(a.get_variable(variable='USER.test.test.test')) # None	(hasn't been set)
+a.set_variable(variable='USER.general.name.first_name', value='First')
+print(a.get_variable(variable='USER.general.name.last_name')) # 'Last'
+print(a.get_variable(variable='USER.general.name.first_name')) # 'First'
+print(a.get_variable(variable='USER.general.name')) # { 'first_name': 'First', 'last_name': 'Last' }
+print(a.get_variable(variable='USER.general')) # { 'name': { 'first_name': 'First', 'last_name': 'Last' } }
+a.set_variable(variable='USER.education.degree', value='BA')
+a.set_variable(variable='USER.education.degree', value='MBA')
+print(a.get_variable(variable='USER.education.degree'))  # 'MBA'
+a.set_variable(variable='USER.education.years_studied', value=4)
+print(a.get_variable(variable='USER.education.years_studied')) # 4
+print(a.get_variable(variable='USER.test.test.test')) # None	(hasn't been set)
 # a.set_variable(variable='USER.general.name.USER.general.name', value="name")
 # print(a.get_variable(variable='USER.general.name')) # 'name'
