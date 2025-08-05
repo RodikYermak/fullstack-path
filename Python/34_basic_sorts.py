@@ -55,3 +55,32 @@ def merge(list1, list2):
     return combined
 
 print(merge([1, 2, 7, 8], [3,4,5,6]))
+
+def meerge_sort(my_list):
+    if len(my_list) == 1:
+        return my_list
+    mid_index = int(len(my_list)/2)
+    left = meerge_sort(my_list[:mid_index])
+    right = meerge_sort(my_list[mid_index:])
+
+    return merge(left, right)
+
+def swap(my_list, index1, index2):
+    temp = my_list[index1]
+    my_list[index1] = my_list[index2]
+    my_list[index2] = temp
+
+def pivot(my_list, pivot_index, end_index):
+    swap_index = pivot_index
+
+    for i in range(pivot_index+1, end_index+1):
+        if my_list[i] < my_list[pivot_index]:
+            swap_index += 1
+            swap(my_list, swap_index, i)
+    swap(my_list, pivot_index, swap_index)
+    return swap_index
+
+my_list = [4,6,1,7,3,2,5]
+
+print(pivot(my_list, 0, 6))
+print(my_list)
