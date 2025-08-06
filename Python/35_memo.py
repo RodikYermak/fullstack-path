@@ -1,6 +1,10 @@
 memo = [None] * 100
+counter = 0
 
 def fib(n):
+    global counter
+    counter += 1
+
     if memo[n] is not None:
         return memo[n]
 
@@ -11,6 +15,7 @@ def fib(n):
 
     return memo[n]
 
-fib(5)
+fib(7)
 
 print(memo)
+print(counter)
