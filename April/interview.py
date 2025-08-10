@@ -89,3 +89,4 @@ print(a.get_variable(variable='USER.education.years_studied')) # 4
 print(a.get_variable(variable='USER.test.test.test')) # None	(hasn't been set)
 # a.set_variable(variable='USER.general.name.USER.general.name', value="name")
 # print(a.get_variable(variable='USER.general.name')) # 'name'
+ 
