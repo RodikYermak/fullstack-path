@@ -86,12 +86,32 @@
 	order the results by city
 */
 
-SELECT c.brand, c.model, d.city, c.price
-FROM cars AS c
-JOIN dealerships AS d 
-  ON c.dealership_id = d.id
-WHERE c.price > ALL (
-    SELECT sc.sold_price 
-    FROM sold_cars AS sc
-)
-ORDER BY d.city;
+-- SELECT c.brand, c.model, d.city, c.price
+-- FROM cars AS c
+-- JOIN dealerships AS d 
+--   ON c.dealership_id = d.id
+-- WHERE c.price > ALL (
+--     SELECT sc.sold_price 
+--     FROM sold_cars AS sc
+-- )
+-- ORDER BY d.city;
+
+
+/*
+	Select colors of car where there has been a sale of that color car
+*/
+
+SELECT color FROM cars
+  WHERE EXISTS (
+    SELECT 1 FROM sold_cars WHERE cars_id = cars.id
+  );
+
+/*
+	Select colors of car where there has been a sale of that color car
+*/
+
+-- SELECT DISTINCT color FROM cars
+--   WHERE EXISTS (
+--     SELECT 1 FROM sold_cars WHERE cars_id = cars.id
+--   )
+--   ORDER BY color;
