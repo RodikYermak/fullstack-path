@@ -153,11 +153,33 @@
 	who have not sold a car for more than $45,000
 */
 
-SELECT name FROM staff S
-  WHERE role = 'Salesperson'
-  AND NOT EXISTS (
-    SELECT 1 FROM sold_cars SC
-      WHERE SC.seller = s.id AND SC.sold_price > 45000
-  ) AND EXISTS (
-    SELECT 1 FROM sold_cars SC where seller = s.id
-  );
+-- SELECT name FROM staff S
+--   WHERE role = 'Salesperson'
+--   AND NOT EXISTS (
+--     SELECT 1 FROM sold_cars SC
+--       WHERE SC.seller = s.id AND SC.sold_price > 45000
+--   ) AND EXISTS (
+--     SELECT 1 FROM sold_cars SC where seller = s.id
+--   );
+
+/*
+	Select the brand, model, condition from cars
+		Based on the car's condition level, output the following:
+			* 'Excellent' when 4 or greater
+			* 'Fair' when 3 or greater
+			* 'Poor' when 1 or greater
+			* 'Wrecked' for all other cases
+		Aliased as 'condition label'
+	From cars
+	Order by the condition in descending order
+*/
+
+SELECT brand, model, condition, 
+  CASE
+    WHEN condition >= 4 THEN 'Excellent'
+    WHEN condition >= 3 THEN 'Fair'
+    WHEN condition >= 1 THEN 'Poor'
+    ELSE 'Wrecked'
+  END AS condition_label
+  FROM cars
+  ORDER BY condition DESC;
