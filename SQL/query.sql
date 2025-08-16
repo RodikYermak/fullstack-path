@@ -101,10 +101,10 @@
 	Select colors of car where there has been a sale of that color car
 */
 
-SELECT color FROM cars
-  WHERE EXISTS (
-    SELECT 1 FROM sold_cars WHERE cars_id = cars.id
-  );
+-- SELECT color FROM cars
+--   WHERE EXISTS (
+--     SELECT 1 FROM sold_cars WHERE cars_id = cars.id
+--   );
 
 /*
 	Select colors of car where there has been a sale of that color car
@@ -115,3 +115,49 @@ SELECT color FROM cars
 --     SELECT 1 FROM sold_cars WHERE cars_id = cars.id
 --   )
 --   ORDER BY color;
+
+
+  /*
+	Select the city, state and date established of dealerships
+		Where there are no existing cars in stock
+
+	Format the date in 'YYYY-MM-DD' format using TO_CHAR()
+		and alias it as 'est'
+*/
+-- SELECT city, state, TO_CHAR(established, 'YYYY-MM-DD') AS est
+-- FROM dealerships d
+-- WHERE NOT EXISTS (
+--     SELECT 1
+--     FROM cars c
+--     WHERE c.dealership_id = d.id
+-- )
+
+/*
+	Select the city and state of dealerships
+	Where there exists a car priced at more than $50,000
+
+	Hint: you'll need to match cars(dealership_id) with dealerships(id)
+	and then check for car price in your subquery
+*/
+
+-- SELECT city, state FROM dealerships
+--     WHERE EXISTS(
+--         SELECT 1
+--         FROM cars
+--         WHERE cars.dealership_id = dealerships.id AND cars.price > 50000
+--     )
+
+/*
+	Select the name of salespeople
+		(role = 'Salesperson')
+	who have not sold a car for more than $45,000
+*/
+
+SELECT name FROM staff S
+  WHERE role = 'Salesperson'
+  AND NOT EXISTS (
+    SELECT 1 FROM sold_cars SC
+      WHERE SC.seller = s.id AND SC.sold_price > 45000
+  ) AND EXISTS (
+    SELECT 1 FROM sold_cars SC where seller = s.id
+  );
