@@ -102,12 +102,34 @@
 	Hint: you may need to join using a table not included in our columns
 */
 
-SELECT
-	D.city,
-	D.state,
-	COUNT(SC.id) AS cars_sold
-FROM sold_cars SC
-	LEFT JOIN cars C ON SC.cars_id = C.id
-	RIGHT JOIN dealerships D ON C.dealership_id = D.id
-GROUP BY D.city, D.state
-ORDER BY cars_sold DESC;
+-- SELECT
+-- 	D.city,
+-- 	D.state,
+-- 	COUNT(SC.id) AS cars_sold
+-- FROM sold_cars SC
+-- 	LEFT JOIN cars C ON SC.cars_id = C.id
+-- 	RIGHT JOIN dealerships D ON C.dealership_id = D.id
+-- GROUP BY D.city, D.state
+-- ORDER BY cars_sold DESC;
+
+/*
+	Select the brand, model and price from cars
+		where the price is greater than the sold price
+			of any car that was sold by Frankie Fender
+		and the car has not been sold
+*/
+
+SELECT brand, model, price FROM cars
+  WHERE price > ANY (
+    SELECT SC.sold_price FROM sold_cars SC
+      JOIN staff S ON SC.seller = S.id
+      WHERE S.name = 'Frankie Fender'
+  ) AND sold IS FALSE;
+
+
+
+/*
+	Select the brand, model and price where
+		* the price is lower than any Ford
+		* the brand is Volkswagen
+*/
