@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 
 import App from './App';
 
-describe('App', ()=>{
+describe('App', () => {
     test('update the top text', async () => {
         // Arrange
         const user = userEvent.setup();
@@ -32,4 +32,19 @@ describe('App', ()=>{
         // Assert
         expect(screen.getByText('Code without coffee')).toBeInTheDocument();
     });
-})
+
+    test('Testing image mock api request', async () => {
+        // Arrange
+        const user = userEvent.setup();
+        render(<App />);
+        const btnImg = screen.getByRole('button', { name: 'Get a new meme image 🖼' });
+
+        // Act
+        // await user.clear(btnImg);
+        await user.click(btnImg);
+
+        // Assert
+        const images = screen.getAllByRole('img');
+        expect(images[1].src).toBe('https://i.imgflip.com/1c1uej.jpg');
+    });
+});
