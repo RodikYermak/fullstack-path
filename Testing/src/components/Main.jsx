@@ -1,40 +1,44 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 
 export default function Main() {
     const [meme, setMeme] = useState({
-        topText: "One does not simply",
-        bottomText: "Walk into Mordor",
-        imageUrl: "https://i.imgflip.com/1bij.jpg"
-    })
-    const [allMemes, setAllMemes] = useState([])
-    
+        topText: 'One does not simply',
+        bottomText: 'Walk into Mordor',
+        imageUrl: 'https://i.imgflip.com/1bij.jpg',
+        imageAlt: 'One Does Not Simply',
+    });
+    const [allMemes, setAllMemes] = useState([]);
+
     useEffect(() => {
-        fetch("https://api.imgflip.com/get_memes")
-            .then(res => res.json())
-            .then(data => setAllMemes(data.data.memes))
-    }, [])
-    
+        fetch('https://api.imgflip.com/get_memes')
+            .then((res) => res.json())
+            .then((data) => setAllMemes(data.data.memes));
+    }, []);
+
     function getMemeImage() {
-        const randomNumber = Math.floor(Math.random() * allMemes.length)
-        const newMemeUrl = allMemes[randomNumber].url
-        setMeme(prevMeme => ({
+        const randomNumber = Math.floor(Math.random() * allMemes.length);
+        const newMemeUrl = allMemes[randomNumber].url;
+        const newMemeName = allMemes[randomNumber].name;
+        setMeme((prevMeme) => ({
             ...prevMeme,
-            imageUrl: newMemeUrl
-        }))
+            imageUrl: newMemeUrl,
+            imageAlt: newMemeName,
+        }));
     }
-    
+
     function handleChange(event) {
-        const {value, name} = event.currentTarget
-        setMeme(prevMeme => ({
+        const { value, name } = event.currentTarget;
+        setMeme((prevMeme) => ({
             ...prevMeme,
-            [name]: value
-        }))
+            [name]: value,
+        }));
     }
 
     return (
         <main>
             <div className="form">
-                <label>Top Text
+                <label>
+                    Top Text
                     <input
                         type="text"
                         placeholder="One does not simply"
@@ -44,7 +48,8 @@ export default function Main() {
                     />
                 </label>
 
-                <label>Bottom Text
+                <label>
+                    Bottom Text
                     <input
                         type="text"
                         placeholder="Walk into Mordor"
@@ -56,10 +61,11 @@ export default function Main() {
                 <button onClick={getMemeImage}>Get a new meme image 🖼</button>
             </div>
             <div className="meme">
-                <img src={meme.imageUrl} crossOrigin="anonymous"/>
+                // Make the change here
+                <img src={meme.imageUrl} alt={meme.imageAlt} crossOrigin="anonymous" />
                 <span className="top">{meme.topText}</span>
                 <span className="bottom">{meme.bottomText}</span>
             </div>
         </main>
-    )
+    );
 }
