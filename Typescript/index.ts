@@ -306,10 +306,15 @@ type Pizza = {
     price: number;
 };
 
+/**
+ * Challenge: using literal types and unions, update the Order status so that
+ * it can only ever be "ordered" or "completed"
+ */
+
 type Order = {
     id: number;
     pizza: Pizza;
-    status: string;
+    status: 'ordered' | 'completed';
 };
 
 const menu = [
@@ -321,7 +326,7 @@ const menu = [
 
 let cashInRegister = 100;
 let nextOrderId = 1;
-const orderQueue: Order[] = [];
+const orderHistory: Order[] = [];
 
 function addNewPizza(pizzaObj: Pizza) {
     menu.push(pizzaObj);
@@ -334,19 +339,15 @@ function placeOrder(pizzaName: string) {
         return;
     }
     cashInRegister += selectedPizza.price;
-    const newOrder = { id: nextOrderId++, pizza: selectedPizza, status: 'ordered' };
-    orderQueue.push(newOrder);
+    const newOrder: Order = { id: nextOrderId++, pizza: selectedPizza, status: 'ordered' };
+    orderHistory.push(newOrder);
     return newOrder;
 }
 
-/**
- * Challenge: Fix the warning below by handling the "sad path" scenario!
- */
-
 function completeOrder(orderId: number) {
-    const order = orderQueue.find((order) => order.id === orderId);
+    const order = orderHistory.find((order) => order.id === orderId);
     if (!order) {
-        console.error(`${order} does noot exist in the order`);
+        console.error(`${orderId} was not found in the orderQueue`);
         return;
     }
     order.status = 'completed';
@@ -362,4 +363,4 @@ completeOrder(1);
 
 console.log('Menu:', menu);
 console.log('Cash in register:', cashInRegister);
-console.log('Order queue:', orderQueue);
+console.log('Order queue:', orderHistory);
