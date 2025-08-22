@@ -21,18 +21,18 @@ import Confetti from 'react-confetti';
 export default function AssemblyEndgame() {
     // State values
     const [currentWord, setCurrentWord] = useState<string>(():string => getRandomWord());
-    const [guessedLetters, setGuessedLetters] = useState<string []>([]);
+    const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
     // setCurrentWord(true)
 
     // Derived values
-    const numGuessesLeft = languages.length - 1;
-    const wrongGuessCount = guessedLetters.filter((letter) => !currentWord.includes(letter)).length;
-    const isGameWon = currentWord.split('').every((letter) => guessedLetters.includes(letter));
-    const isGameLost = wrongGuessCount >= numGuessesLeft;
-    const isGameOver = isGameWon || isGameLost;
-    const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
-    const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
+    const numGuessesLeft: number = languages.length - 1;
+    const wrongGuessCount: number = guessedLetters.filter((letter) => !currentWord.includes(letter)).length;
+    const isGameWon: boolean = currentWord.split('').every((letter) => guessedLetters.includes(letter));
+    const isGameLost: boolean = wrongGuessCount >= numGuessesLeft;
+    const isGameOver: boolean = isGameWon || isGameLost;
+    const lastGuessedLetter: string = guessedLetters[guessedLetters.length - 1];
+    const isLastGuessIncorrect: boolean | string= lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
 
     // Static values
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
