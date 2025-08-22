@@ -27,8 +27,8 @@ export default function AssemblyEndgame() {
 
     // Derived values
     const numGuessesLeft: number = languages.length - 1;
-    const wrongGuessCount: number = guessedLetters.filter((letter) => !currentWord.includes(letter)).length;
-    const isGameWon: boolean = currentWord.split('').every((letter) => guessedLetters.includes(letter));
+    const wrongGuessCount: number = guessedLetters.filter((letter:string) => !currentWord.includes(letter)).length;
+    const isGameWon: boolean = currentWord.split('').every((letter:string) => guessedLetters.includes(letter));
     const isGameLost: boolean = wrongGuessCount >= numGuessesLeft;
     const isGameOver: boolean = isGameWon || isGameLost;
     const lastGuessedLetter: string = guessedLetters[guessedLetters.length - 1];
