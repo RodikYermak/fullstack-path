@@ -27,8 +27,8 @@ export default function AssemblyEndgame() {
 
     // Derived values
     const numGuessesLeft: number = languages.length - 1;
-    const wrongGuessCount: number = guessedLetters.filter((letter:string) => !currentWord.includes(letter)).length;
-    const isGameWon: boolean = currentWord.split('').every((letter:string) => guessedLetters.includes(letter));
+    const wrongGuessCount: number = guessedLetters.filter((letter:string):boolean => !currentWord.includes(letter)).length;
+    const isGameWon: boolean = currentWord.split('').every((letter:string):boolean => guessedLetters.includes(letter));
     const isGameLost: boolean = wrongGuessCount >= numGuessesLeft;
     const isGameOver: boolean = isGameWon || isGameLost;
     const lastGuessedLetter: string = guessedLetters[guessedLetters.length - 1];
@@ -37,13 +37,13 @@ export default function AssemblyEndgame() {
     // Static values
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-    function addGuessedLetter(letter) {
-        setGuessedLetters((prevLetters) =>
+    function addGuessedLetter(letter:string): void {
+        setGuessedLetters((prevLetters:string[]):string[] =>
             prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
         );
     }
 
-    function startNewGame() {
+    function startNewGame(): void {
         setCurrentWord(getRandomWord());
         setGuessedLetters([]);
     }
