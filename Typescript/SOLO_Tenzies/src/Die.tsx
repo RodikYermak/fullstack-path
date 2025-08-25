@@ -1,4 +1,12 @@
-export default function Die(props) {
+import type { JSX } from 'react';
+
+type DieProps = {
+    isHeld: boolean;
+    hold: () => void;
+    value: number;
+}
+
+export default function Die(props: DieProps): JSX.Element {
     const styles = {
         backgroundColor: props.isHeld ? '#59E391' : 'white',
     };
