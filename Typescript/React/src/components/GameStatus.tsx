@@ -7,7 +7,7 @@ type GameStatusProps = {
     isGameWon: boolean;
     isGameLost: boolean;
     isGameOver: boolean;
-    isLastGuessIncorrect: boolean;
+    isLastGuessIncorrect: boolean | string;
     wrongGuessCount: number;
 };
 
