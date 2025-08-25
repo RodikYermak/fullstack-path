@@ -10,7 +10,7 @@ const server = http.createServer(async (req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(destinations));
-    } else if (req.url.startsWith('/api/continent')) {
+    } else if (req.url.startsWith('/api/continent') && req.method === 'GET') {
         const parts = req.url.split('/');
         const continentName = parts[parts.length - 1];
 
