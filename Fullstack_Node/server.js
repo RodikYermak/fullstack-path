@@ -1,5 +1,6 @@
 import http from 'node:http';
 import path from 'node:path';
+import serveStatic from 'utils/serveStatic.js';
 
 const PORT = 8000;
 
@@ -11,6 +12,7 @@ const server = http.createServer((req, res) => {
     console.log('absolute', absPathToResource);
     console.log('relative', relPathToResource);
 
+    serveStatic(__dirname);
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     res.end(`
