@@ -4,19 +4,15 @@ import { sendResponse } from './sendResponse.js';
 import { getContentType } from './getContentType.js';
 
 export async function serveStatic(req, res, baseDir) {
-    /*
-Challenge: 
-  1. Write code below to serve files from our public directory.
-     
-     Don’t worry about handling errors for now.
-     hint.md for help!
-*/
+    const { pathname } = new URL(req.url || '/', `http://${req.headers.host}`);
+    const relPath = pathname === '/' ? 'index.html' : pathname;
 
-    const filePath = path.join(baseDir, 'public', 'index.html');
+    const filePath = path.join(baseDir, 'public', relPath);
 
     try {
         const content = await fs.readFile(filePath);
-        sendResponse(res, 200, 'text/html', content);
+        const contentType = getContentType(path.extname(filePath).toLowerCase());
+        sendResponse(res, 200, contentType, content);
     } catch (err) {
         console.log(err);
     }
