@@ -1,30 +1,22 @@
-/*
-Challenge: 
-
-1.Set up a server that serves the string 
-    '<html><h1>The server is working</h1></html>'.
-    
-    What should the content type be? 
-    What status code should you send?
-
-2. Listen on port 8000 and log a connection message to the console.
-
-3. Open the browser to see your first served HTML.
-
-*/
-
 import http from 'node:http';
+import path from 'node:path';
 
 const PORT = 8000;
 
-const server = http.createServer(async (req, res) => {
+const __dirname = import.meta.dirname;
+
+const server = http.createServer((req, res) => {
+    const absPathToResource = path.join(__dirname, 'public', 'index.html');
+    const relPathToResource = path.join('public', 'index.html');
+    console.log('absolute', absPathToResource);
+    console.log('relative', relPathToResource);
+
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
     res.end(`
         <html>
             <h1>The server is working</h1>
-        </html>`
-    );
+        </html>`);
 });
 
 server.listen(PORT, () => console.log('Connected'));
