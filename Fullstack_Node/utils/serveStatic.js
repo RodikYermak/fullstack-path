@@ -4,16 +4,23 @@ import { sendResponse } from './sendResponse.js';
 import { getContentType } from './getContentType.js';
 
 export async function serveStatic(req, res, baseDir) {
-    const { pathname } = new URL(req.url || '/', `http://${req.headers.host}`);
-    const relPath = pathname === '/' ? 'index.html' : pathname;
+    const publicDir = path.join(baseDir, 'public');
+    const filePath = path.join(publicDir, req.url === '/' ? 'index.html' : req.url);
 
-    const filePath = path.join(baseDir, 'public', relPath);
+    const ext = path.extname(filePath);
+
+    const contentType = getContentType(ext);
 
     try {
         const content = await fs.readFile(filePath);
-        const contentType = getContentType(path.extname(filePath).toLowerCase());
         sendResponse(res, 200, contentType, content);
     } catch (err) {
-        console.log(err);
+        if (err.code === 'ENOENT') {
+            const notFoundPath = path.join(publicDir, '404.html');
+            const notFound = await fs.readFile(notFoundPath);
+            return sendResponse(res, 404, 'text/html', notFound);
+        } else {
+            sendResponse(res, 500, 'text/html', `<html><h1>Server Error: ${err.code}</h1></html>`);
+        }
     }
 }
